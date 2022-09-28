@@ -29,12 +29,12 @@ const ForgeViewer = (props: ForgeViewerProps) => {
 
     Autodesk.Viewing.Initializer(options, function () {
       const v3D = new Autodesk.Viewing.Private.GuiViewer3D(viewer3DRef.current)
-      const v2D = new Autodesk.Viewing.Private.GuiViewer3D(viewer2DRef.current)
+    //   const v2D = new Autodesk.Viewing.Private.GuiViewer3D(viewer2DRef.current)
 
       var startedCode1 = v3D.start()
-      var startedCode2 = v2D.start()
+    //   var startedCode2 = v2D.start()
 
-      if (startedCode1 > 0 || startedCode2 > 0) {
+      if (startedCode1 > 0 ) {
         console.error("Failed to create a Viewer: WebGL not supported.")
         return
       }
@@ -50,13 +50,13 @@ const ForgeViewer = (props: ForgeViewerProps) => {
         )
 
         // load the first 2d view
-        v2D.loadDocumentNode(
-          viewerDocument,
-          viewerDocument.getRoot().search({
-            type: "geometry",
-            role: "2d",
-          })[0]
-        )
+        // v2D.loadDocumentNode(
+        //   viewerDocument,
+        //   viewerDocument.getRoot().search({
+        //     type: "geometry",
+        //     role: "2d",
+        //   })[0]
+        // )
       }
 
       console.log("Initialization complete, loading a model next...")
@@ -67,7 +67,7 @@ const ForgeViewer = (props: ForgeViewerProps) => {
       )
 
       setViewer3D(v3D)
-      setViewer2D(v2D)
+    //   setViewer2D(v2D)
     })
     return () => {
       if (!viewer3D) return
