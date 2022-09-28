@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react"
 
 declare var Autodesk: any
 
-interface ForgeViewerProps {
+export interface ForgeViewerProps {
   urn: string
   accessToken: string
 }
@@ -87,7 +87,7 @@ const ForgeViewer = (props: ForgeViewerProps) => {
     console.error("Failed fetching Forge manifest", e)
   }
 
-  return <div ref={viewer3DRef} className="forgeViewer"></div>
+  return <div ref={viewer3DRef} className="forgeViewer" style={{height: '100%'}}></div>
   // <Col span={12}><div ref={viewer2DRef} className="forgeViewer"></div></Col>
 }
 
