@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/lagarsoft"
   },
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "React component to wrap Autodesk Forge Viewer",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -30,7 +30,6 @@
     "url": "https://github.com/lagarsoft/forge-viewer-react/issues"
   },
   "homepage": "https://github.com/lagarsoft/forge-viewer-react#readme",
-
   "devDependencies": {
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-node-resolve": "^14.1.0",
@@ -38,6 +37,9 @@
     "@types/react": "^18.0.21",
     "rollup": "^2.79.1",
     "rollup-plugin-dts": "^4.2.2",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-terser": "^7.0.2",
     "tslib": "^2.4.0",
     "typescript": "^4.8.4"
   },
