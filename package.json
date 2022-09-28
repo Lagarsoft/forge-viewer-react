@@ -1,0 +1,45 @@
+{
+  "name": "@lagarsoft/forge-viewer-react",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/lagarsoft"
+  },
+  "version": "0.0.1",
+  "description": "React component to wrap Forge Viewer by Autodesk",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "rollup": "rollup -c",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lagarsoft/forge-viewer-react.git"
+  },
+  "keywords": [
+    "Forge",
+    "ForgeViewer",
+    "React"
+  ],
+  "author": "lagarsoft",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lagarsoft/forge-viewer-react/issues"
+  },
+  "homepage": "https://github.com/lagarsoft/forge-viewer-react#readme",
+
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^22.0.2",
+    "@rollup/plugin-node-resolve": "^14.1.0",
+    "@rollup/plugin-typescript": "^8.5.0",
+    "@types/react": "^18.0.21",
+    "react": "^18.2.0",
+    "rollup": "^2.79.1",
+    "rollup-plugin-dts": "^4.2.2",
+    "tslib": "^2.4.0",
+    "typescript": "^4.8.4"
+  }
+}
