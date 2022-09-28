@@ -36,6 +36,10 @@ Enable using Autodesk Forge Viewer v7 as a Typed React component
         <ForgeViewer urn={urn} accessToken={accessToken} />
 
 
+https://user-images.githubusercontent.com/1298917/192904913-56bc061a-4da4-44e9-9c79-81e0871043f5.mp4
+
+
+
 ## How to contribute
 
 PRs are welcome, also feel free to reach us Martin Daguerre (<martin.daguerre@lagarsoft.com>) and Pablo Gancharov (<pablo.gancharov@lagarsoft.com>)
