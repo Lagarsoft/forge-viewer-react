@@ -16,7 +16,8 @@ const ForgeViewer = (props: ForgeViewerProps) => {
   const viewer2DRef = useRef(null)
 
   useEffect(() => {
-    if (!urn || !accessToken || !viewer3DRef || !viewer2DRef || !Autodesk) return
+    if (!urn || !accessToken || !viewer3DRef || !viewer2DRef || !Autodesk)
+      return
     console.log(accessToken, urn)
     var options = {
       env: "AutodeskProduction2",
@@ -29,12 +30,12 @@ const ForgeViewer = (props: ForgeViewerProps) => {
 
     Autodesk.Viewing.Initializer(options, function () {
       const v3D = new Autodesk.Viewing.Private.GuiViewer3D(viewer3DRef.current)
-    //   const v2D = new Autodesk.Viewing.Private.GuiViewer3D(viewer2DRef.current)
+      //   const v2D = new Autodesk.Viewing.Private.GuiViewer3D(viewer2DRef.current)
 
       var startedCode1 = v3D.start()
-    //   var startedCode2 = v2D.start()
+      //   var startedCode2 = v2D.start()
 
-      if (startedCode1 > 0 ) {
+      if (startedCode1 > 0) {
         console.error("Failed to create a Viewer: WebGL not supported.")
         return
       }
@@ -67,7 +68,7 @@ const ForgeViewer = (props: ForgeViewerProps) => {
       )
 
       setViewer3D(v3D)
-    //   setViewer2D(v2D)
+      //   setViewer2D(v2D)
     })
     return () => {
       if (!viewer3D) return
@@ -87,7 +88,15 @@ const ForgeViewer = (props: ForgeViewerProps) => {
     console.error("Failed fetching Forge manifest", e)
   }
 
-  return Autodesk !== undefined ? <div ref={viewer3DRef} className="forgeViewer" style={{height: '100%'}}></div> : <div> Plese include viewer3D.min.js to the index.html</div>
+  return (typeof Autodesk !== 'undefined') ? (
+    <div
+      ref={viewer3DRef}
+      className="forgeViewer"
+      style={{ height: "100%" }}
+    ></div>
+  ) : (
+    <div> Plese include viewer3D.min.js to the index.html</div>
+  )
 }
 
 export default ForgeViewer
