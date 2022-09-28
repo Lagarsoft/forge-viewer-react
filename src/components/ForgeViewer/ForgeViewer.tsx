@@ -16,7 +16,7 @@ const ForgeViewer = (props: ForgeViewerProps) => {
   const viewer2DRef = useRef(null)
 
   useEffect(() => {
-    if (!urn || !accessToken || !viewer3DRef || !viewer2DRef) return
+    if (!urn || !accessToken || !viewer3DRef || !viewer2DRef || !Autodesk) return
     console.log(accessToken, urn)
     var options = {
       env: "AutodeskProduction2",
