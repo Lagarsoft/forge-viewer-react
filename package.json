@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/lagarsoft"
   },
-  "version": "0.0.12",
+  "version": "0.1.0",
   "description": "React component to wrap Autodesk Forge Viewer",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
