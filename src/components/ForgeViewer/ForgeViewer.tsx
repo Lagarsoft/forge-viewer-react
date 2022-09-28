@@ -87,8 +87,7 @@ const ForgeViewer = (props: ForgeViewerProps) => {
     console.error("Failed fetching Forge manifest", e)
   }
 
-  return Autodesk ? <div ref={viewer3DRef} className="forgeViewer" style={{height: '100%'}}></div> : <div> Plese include viewer3D.min.js to the index.html</div>
-  // <Col span={12}><div ref={viewer2DRef} className="forgeViewer"></div></Col>
+  return Autodesk !== undefined ? <div ref={viewer3DRef} className="forgeViewer" style={{height: '100%'}}></div> : <div> Plese include viewer3D.min.js to the index.html</div>
 }
 
 export default ForgeViewer
