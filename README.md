@@ -37,7 +37,7 @@ Enable using Autodesk Forge Viewer v7 as a Typed React component
 
 
 https://user-images.githubusercontent.com/1298917/192904913-56bc061a-4da4-44e9-9c79-81e0871043f5.mp4
-
+* Model by Pau from [/slantis](https://www.slantis.com/)
 
 
 ## How to contribute
