@@ -54,11 +54,7 @@ export function ForgeViewer(props: ForgeViewerProps) {
                 console.error({ code, message, errors });
             }
             viewer.setLightPreset(0);
-            console.log(viewer)
-            // viewer.resize();
-            // window.addEventListener('resize', function () {
-            //     viewer.resize();
-            // });
+
             Autodesk.Viewing.Document.load('urn:' + urn, onDocumentLoadSuccess, onDocumentLoadFailure);
 
             setViewer(viewer);
