@@ -5,45 +5,43 @@
   },
   "version": "0.1.0",
   "description": "React component to wrap Autodesk Forge Viewer",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "type": "module",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
   "files": [
     "dist"
   ],
-  "types": "dist/index.d.ts",
   "scripts": {
-    "rollup": "rollup -c",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lagarsoft/forge-viewer-react.git"
-  },
-  "keywords": [
-    "Forge",
-    "ForgeViewer",
-    "React"
-  ],
-  "author": "lagarsoft",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lagarsoft/forge-viewer-react/issues"
-  },
-  "homepage": "https://github.com/lagarsoft/forge-viewer-react#readme",
-  "devDependencies": {
-    "@rollup/plugin-commonjs": "^22.0.2",
-    "@rollup/plugin-node-resolve": "^14.1.0",
-    "@rollup/plugin-typescript": "^8.5.0",
-    "@types/react": "^18.0.21",
-    "rollup": "^2.79.1",
-    "rollup-plugin-dts": "^4.2.2",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-terser": "^7.0.2",
-    "tslib": "^2.4.0",
-    "typescript": "^4.8.4"
+    "dev": "vite",
+    "build": "tsc --p ./tsconfig-build.json && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "prepublishOnly": "npm run build",
+    "dev-lib": "vite build --watch"
   },
   "peerDependencies": {
-    "react": "^18.2.0"
-  }
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@types/node": "^20.11.6",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "glob": "^10.3.10",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8",
+    "vite-plugin-dts": "^3.7.2",
+    "vite-plugin-lib-inject-css": "^1.3.0"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ]
 }
