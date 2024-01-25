@@ -9,10 +9,10 @@ declare var Autodesk: any
 export interface ForgeViewerProps {
     urn: string
     accessToken: string
-    registerExtensionsCallback: CallableFunction,
-    loadAutodeskExtensions: string[],
-    loadCustomExtensions: string[],
-    customExtensionsCallbacks: any
+    registerExtensionsCallback?: CallableFunction,
+    loadAutodeskExtensions?: string[],
+    loadCustomExtensions?: string[],
+    customExtensionsCallbacks?: any
 }
 
 export function ForgeViewer(props: ForgeViewerProps) {
@@ -41,8 +41,7 @@ export function ForgeViewer(props: ForgeViewerProps) {
 
         Autodesk.Viewing.Initializer(options, () => {
             const config = {
-                extensions: loadAutodeskExtensions
-                // extensions: ['Autodesk.DocumentBrowser', 'Autodesk.VisualClusters']
+                extensions: loadAutodeskExtensions || ['Autodesk.DocumentBrowser', 'Autodesk.VisualClusters']
             };
             const viewer = new Autodesk.Viewing.GuiViewer3D(viewerRef.current, config);
             viewer.start();
@@ -56,7 +55,7 @@ export function ForgeViewer(props: ForgeViewerProps) {
                 await viewer.loadDocumentNode(doc, doc.getRoot().getDefaultGeometry());
 
                 // load custom extensions
-                const loadExtensionsPromises = loadCustomExtensions.map(element => {
+                const loadExtensionsPromises = (loadCustomExtensions || []).map(element => {
                     return viewer.loadExtension(element);
                 });
 
@@ -73,7 +72,8 @@ export function ForgeViewer(props: ForgeViewerProps) {
             }
 
             viewer.setLightPreset(0);
-            registerExtensionsCallback(viewer);
+            if (registerExtensionsCallback) registerExtensionsCallback(viewer);
+
             setViewer(viewer);
 
             Autodesk.Viewing.Document.load('urn:' + urn, onDocumentLoadSuccess, onDocumentLoadFailure);
