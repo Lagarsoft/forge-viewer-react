@@ -9,10 +9,14 @@ declare var Autodesk: any
 export interface ForgeViewerProps {
     urn: string
     accessToken: string
+    registerExtensionsCallback: CallableFunction,
+    loadAutodeskExtensions: string[],
+    loadCustomExtensions: string[],
+    customExtensionsCallbacks: any
 }
 
 export function ForgeViewer(props: ForgeViewerProps) {
-    const { urn, accessToken } = props
+    const { urn, accessToken, registerExtensionsCallback, loadAutodeskExtensions, loadCustomExtensions, customExtensionsCallbacks: customExtensionsCallbacks } = props
 
     const [viewer, setViewer] = useState<any>(null)
 
@@ -37,7 +41,8 @@ export function ForgeViewer(props: ForgeViewerProps) {
 
         Autodesk.Viewing.Initializer(options, () => {
             const config = {
-                extensions: ['Autodesk.DocumentBrowser', 'Autodesk.VisualClusters']
+                extensions: loadAutodeskExtensions
+                // extensions: ['Autodesk.DocumentBrowser', 'Autodesk.VisualClusters']
             };
             const viewer = new Autodesk.Viewing.GuiViewer3D(viewerRef.current, config);
             viewer.start();
@@ -47,17 +52,34 @@ export function ForgeViewer(props: ForgeViewerProps) {
 
 
             // Load Document
-            const onDocumentLoadSuccess = (doc: any) => {
-                viewer.loadDocumentNode(doc, doc.getRoot().getDefaultGeometry());
+            const onDocumentLoadSuccess = async (doc: any) => {
+                await viewer.loadDocumentNode(doc, doc.getRoot().getDefaultGeometry());
+
+                // load custom extensions
+                const loadExtensionsPromises = loadCustomExtensions.map(element => {
+                    return viewer.loadExtension(element);
+                });
+
+                // Wait for all extensions to be loaded
+                await Promise.all(loadExtensionsPromises);
+
+
+                //save the callback for later use inside the click events
+                viewer.customCallbacks = customExtensionsCallbacks
             }
+
             const onDocumentLoadFailure = (code: any, message: any, errors: any) => {
                 console.error({ code, message, errors });
             }
+
             viewer.setLightPreset(0);
+            registerExtensionsCallback(viewer);
+            setViewer(viewer);
 
             Autodesk.Viewing.Document.load('urn:' + urn, onDocumentLoadSuccess, onDocumentLoadFailure);
 
-            setViewer(viewer);
+
+
         });
 
 
