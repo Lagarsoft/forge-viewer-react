@@ -3,7 +3,9 @@
 ## Version 0.3.0 (2022-26-01)
 
 ### Added
-- Now we can register and load Custom Extensions 
+- Now we can register and load Custom Extensions
+- Documentation folder "docs"
+- Added changelog.md to track changes
  
 ### Changed
 - Also we can load token and urn from .env files
