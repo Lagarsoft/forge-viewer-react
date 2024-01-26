@@ -1,1 +1,9 @@
 /* App styles goes here */
+
+.my-view-custom-button1 {
+    background-image: url("../public/vite.svg");
+    background-size: 36px 36px;
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-color: #ffffff;
+  }
