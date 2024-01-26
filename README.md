@@ -56,4 +56,8 @@ To start the demo app:
 npm run dev
 ```
 
+## Q&A:
+
+    Failed to resolve import "../" from "src/App.tsx". Does the file exist?
+> you need to compile the library at least once to start the demo app: `npm run build`
 
